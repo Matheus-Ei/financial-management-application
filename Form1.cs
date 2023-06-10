@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,24 +20,6 @@ namespace Aplicativo_de_Gestão_de_Finanças_Pessoais
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // Configurar a conexão com o banco de dados
-            string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\t4iga\OneDrive\Empresa\Versões do Aplicativo\Aplicativo de Gestão de Finanças Pessoais\database.accdb;";
-            OleDbConnection connection = new OleDbConnection(connectionString);
-
-            // Consulta SQL para obter os dados do banco de dados
-            string query = "SELECT valor, titulo, data FROM receitas";
-
-            // Criação do comando SQL
-            OleDbCommand command = new OleDbCommand(query, connection);
-
-            // Abertura da conexão
-            connection.Open();
-
-            // Leitura dos dados do banco de dados
-            OleDbDataReader reader = command.ExecuteReader();
-
-
-
             // Adicionar alguns pontos de dados ao gráfico
             chart4.Series.Clear();
             chart4.Series.Add("Dados");
@@ -49,16 +30,12 @@ namespace Aplicativo_de_Gestão_de_Finanças_Pessoais
             chart4.Series["Dados"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
 
 
-            // Limpar os pontos de dados existentes no gráfico
-            chart1.Series["dadosReceita"].Points.Clear();
-            // Adicionar os pontos de dados do banco de dados ao gráfico
-            while (reader.Read())
-            {
-                string categoria = reader["titulo"].ToString();
-                int valor = Convert.ToInt32(reader["valor"]);
-
-                chart1.Series["dadosReceita"].Points.AddXY(categoria, valor);
-            }
+            // Adicionar alguns pontos de dados ao gráfico
+            chart2.Series.Clear();
+            chart2.Series.Add("dadosReceita");
+            chart2.Series["dadosReceita"].Points.AddXY("Categoria 1", 10);
+            chart2.Series["dadosReceita"].Points.AddXY("Categoria 2", 20);
+            chart2.Series["dadosReceita"].Points.AddXY("Categoria 3", 15);
             // Configurar o tipo de gráfico
             chart2.Series["dadosReceita"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
 
@@ -81,6 +58,46 @@ namespace Aplicativo_de_Gestão_de_Finanças_Pessoais
             chart3.Series["dadosPatrimonio"].Points.AddXY("Categoria 3", 15);
             // Configurar o tipo de gráfico
             chart3.Series["dadosPatrimonio"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+
+
+            // Adicionar alguns pontos de dados ao gráfico
+            chart5.Series.Clear();
+            chart5.Series.Add("dadosBalanco");
+            chart5.Series["dadosBalanco"].Points.AddXY("Categoria 1", 10);
+            chart5.Series["dadosBalanco"].Points.AddXY("Categoria 2", 20);
+            chart5.Series["dadosBalanco"].Points.AddXY("Categoria 3", 15);
+            // Configurar o tipo de gráfico
+            chart5.Series["dadosBalanco"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+
+
+            // Adicionar alguns pontos de dados ao gráfico
+            chart8.Series.Clear();
+            chart8.Series.Add("dadosCarteira");
+            chart8.Series["dadosCarteira"].Points.AddXY("Categoria 1", 10);
+            chart8.Series["dadosCarteira"].Points.AddXY("Categoria 2", 20);
+            chart8.Series["dadosCarteira"].Points.AddXY("Categoria 3", 15);
+            // Configurar o tipo de gráfico
+            chart8.Series["dadosCarteira"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+
+
+            // Adicionar alguns pontos de dados ao gráfico
+            chart7.Series.Clear();
+            chart7.Series.Add("dadosRendimentos");
+            chart7.Series["dadosRendimentos"].Points.AddXY("Categoria 1", 10);
+            chart7.Series["dadosRendimentos"].Points.AddXY("Categoria 2", 20);
+            chart7.Series["dadosRendimentos"].Points.AddXY("Categoria 3", 15);
+            // Configurar o tipo de gráfico
+            chart7.Series["dadosRendimentos"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+
+
+            // Adicionar alguns pontos de dados ao gráfico
+            chart6.Series.Clear();
+            chart6.Series.Add("dadosProporcao");
+            chart6.Series["dadosProporcao"].Points.AddXY("Categoria 1", 10);
+            chart6.Series["dadosProporcao"].Points.AddXY("Categoria 2", 20);
+            chart6.Series["dadosProporcao"].Points.AddXY("Categoria 3", 15);
+            // Configurar o tipo de gráfico
+            chart6.Series["dadosProporcao"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
         }
 
         private void menuLateralClicked(object sender, ToolStripItemClickedEventArgs e)
